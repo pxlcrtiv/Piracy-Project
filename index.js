@@ -9,7 +9,7 @@ firebase.initializeApp({
     authDomain: "schproject-81e0b.firebaseapp.com",
     projectId: "schproject-81e0b",
     storageBucket: "schproject-81e0b.appspot.com",
-    databaseURL: "https://schproject-81e0b-default-rtdb.europe-west1.firebasedatabase.app"
+    databaseURL: "https://console.firebase.google.com/u/0/project/schproject-81e0b/database/schproject-81e0b-default-rtdb/data/~2F"
   });
 
 let generatedPasswords = [];
