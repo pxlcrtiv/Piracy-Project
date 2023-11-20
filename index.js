@@ -5,19 +5,17 @@ let inputElement = document.getElementById("input");
 
 // Initialize Firebase with your project config
 firebase.initializeApp({
-  apiKey: "AIzaSyB1JUWg4jOvVghD8Masi0dJAI1hhayZmLc",
-  authDomain: "schproject-81e0b.firebaseapp.com",
-  projectId: "schproject-81e0b",
-  storageBucket: "schproject-81e0b.appspot.com",
-  databaseURL: "https://schproject-81e0b-default-rtdb.europe-west1.firebasedatabase.app"
-});
+    apiKey: "AIzaSyB1JUWg4jOvVghD8Masi0dJAI1hhayZmLc",
+    authDomain: "schproject-81e0b.firebaseapp.com",
+    projectId: "schproject-81e0b",
+    storageBucket: "schproject-81e0b.appspot.com",
+    databaseURL: "https://schproject-81e0b-default-rtdb.europe-west1.firebasedatabase.app"
+  });
 
 let generatedPasswords = [];
-
-// Reference to the Firebase database
 let database = firebase.database();
 
-function generatePass() {
+async function generatePass() {
     let password1 = "";
     let password2 = "";
     for (let i = 0; i < 16; i++) {
@@ -33,12 +31,15 @@ function generatePass() {
     generatedPasswords.push(password1, password2);
 
     // Save generated passwords to Firebase
-    database.ref('generatedPasswords').set(generatedPasswords);
+    await database.ref('generatedPasswords').set(generatedPasswords);
 }
 
-function validateInput() {
+async function validateInput() {
     let userInput = inputElement.value;
-    if (generatedPasswords.includes(userInput)) {
+    const snapshot = await database.ref('generatedPasswords').once('value');
+    const storedPasswords = snapshot.val() || [];
+
+    if (storedPasswords.includes(userInput)) {
         alert("Software Key is valid!");
     } else {
         alert("Pirated software detected!");
