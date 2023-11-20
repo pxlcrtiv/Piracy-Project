@@ -3,6 +3,29 @@ let passUno = document.getElementById("pass1");
 let passDuos = document.getElementById("pass2");
 let inputElement = document.getElementById("input");
 
+
+ // Import the functions you need from the SDKs you need
+ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+ import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics.js";
+ // TODO: Add SDKs for Firebase products that you want to use
+ // https://firebase.google.com/docs/web/setup#available-libraries
+
+ // Your web app's Firebase configuration
+ // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+ const firebaseConfig = {
+   apiKey: "AIzaSyB1JUWg4jOvVghD8Masi0dJAI1hhayZmLc",
+   authDomain: "schproject-81e0b.firebaseapp.com",
+   projectId: "schproject-81e0b",
+   storageBucket: "schproject-81e0b.appspot.com",
+   messagingSenderId: "453883692077",
+   appId: "1:453883692077:web:76c351281815182717a4a4",
+   measurementId: "G-275W0QFJD6"
+ };
+
+ // Initialize Firebase
+ const app = initializeApp(firebaseConfig);
+ const analytics = getAnalytics(app);
+
 // Initialize Firebase with your project config
 firebase.initializeApp({
     apiKey: "AIzaSyB1JUWg4jOvVghD8Masi0dJAI1hhayZmLc",
